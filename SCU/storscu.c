@@ -845,35 +845,6 @@ void FreeList(InstanceNode** A_list)
     }
 }
 
-/****************************************************************************
-*
-*  Function    :   GetNumOutstandingRequests
-*
-*  Parameters  :   A_list     - Pointer to head of node list to get count for
-*
-*  Returns     :   int, num messages we're waiting for c-store responses for
-*
-*  Description :   Checks the list of instances sent over the association &
-*                  returns the number of responses we're waiting for.
-*
-****************************************************************************/
-int GetNumOutstandingRequests(InstanceNode* A_list)
-
-{
-    int            outstandingResponseMsgs = 0;
-    InstanceNode* node;
-
-    node = A_list;
-    while (node)
-    {
-        if ((node->imageSent == SAMP_TRUE) && (node->responseReceived == SAMP_FALSE))
-            outstandingResponseMsgs++;
-
-        node = node->Next;
-    }
-    return outstandingResponseMsgs;
-}
-
 /********************************************************************
 *
 *  Function    :   PrintCmdLine
