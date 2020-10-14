@@ -17,6 +17,7 @@ int main(int argc, char** argv)
     double                  seconds = 0.0;
     void* startTime = NULL, *imageStartTime = NULL;
     char                    fname[512] = { 0 };  /* Extra long, just in case */
+                                                 //    ServiceInfo             servInfo;
     size_t                  totalBytesRead = 0L;
     InstanceNode* instanceList = NULL, *node = NULL;
     Patient_info            patientinfo;
@@ -26,7 +27,6 @@ int main(int argc, char** argv)
     * structure with these parameters
     */
     sampBool = TestCmdLine(argc, argv, &options, &patientinfo);
-	CheckTestCMD(sampBool);
     if (sampBool == SAMP_FALSE)
     {
         return(EXIT_FAILURE);
@@ -52,12 +52,19 @@ int main(int argc, char** argv)
     /*
     *   Open association and override hostname & port parameters if they were supplied on the command line.
     */
-    mcStatus = MC_Open_Association(applicationID,
+   /* mcStatus = MC_Open_Association(applicationID,
         &associationID,
         options.RemoteAE,
         options.RemotePort != -1 ? &options.RemotePort : NULL,
         options.RemoteHostname[0] ? options.RemoteHostname : NULL,
-        options.ServiceList[0] ? options.ServiceList : NULL);
+        options.ServiceList[0] ? options.ServiceList : NULL);*/
+
+    mcStatus = MC_Open_Association(applicationID,
+        &associationID,
+        options.RemoteAE,
+        &options.RemotePort,
+        options.RemoteHostname,
+        options.ServiceList);
 
     CheckMCOpenAssociation(options, mcStatus);
 
@@ -117,14 +124,6 @@ int main(int argc, char** argv)
     fflush(stdout);
 
     return(EXIT_SUCCESS);
-}
-
-void CheckTestCMD(SAMP_BOOLEAN sampBool)
-{
-	if (sampBool == SAMP_FALSE)
-	{
-		exit(0);
-	}
 }
 
 void CheckMCLibraryInitialization(MC_STATUS mcStatus)
@@ -844,6 +843,35 @@ void FreeList(InstanceNode** A_list)
 
         free(node);
     }
+}
+
+/****************************************************************************
+*
+*  Function    :   GetNumOutstandingRequests
+*
+*  Parameters  :   A_list     - Pointer to head of node list to get count for
+*
+*  Returns     :   int, num messages we're waiting for c-store responses for
+*
+*  Description :   Checks the list of instances sent over the association &
+*                  returns the number of responses we're waiting for.
+*
+****************************************************************************/
+int GetNumOutstandingRequests(InstanceNode* A_list)
+
+{
+    int            outstandingResponseMsgs = 0;
+    InstanceNode* node;
+
+    node = A_list;
+    while (node)
+    {
+        if ((node->imageSent == SAMP_TRUE) && (node->responseReceived == SAMP_FALSE))
+            outstandingResponseMsgs++;
+
+        node = node->Next;
+    }
+    return outstandingResponseMsgs;
 }
 
 /********************************************************************
