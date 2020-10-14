@@ -17,7 +17,6 @@ int main(int argc, char** argv)
     double                  seconds = 0.0;
     void* startTime = NULL, *imageStartTime = NULL;
     char                    fname[512] = { 0 };  /* Extra long, just in case */
-                                                 //    ServiceInfo             servInfo;
     size_t                  totalBytesRead = 0L;
     InstanceNode* instanceList = NULL, *node = NULL;
     Patient_info            patientinfo;
@@ -27,6 +26,7 @@ int main(int argc, char** argv)
     * structure with these parameters
     */
     sampBool = TestCmdLine(argc, argv, &options, &patientinfo);
+	CheckTestCMD(sampBool);
     if (sampBool == SAMP_FALSE)
     {
         return(EXIT_FAILURE);
@@ -117,6 +117,14 @@ int main(int argc, char** argv)
     fflush(stdout);
 
     return(EXIT_SUCCESS);
+}
+
+void CheckTestCMD(SAMP_BOOLEAN sampBool)
+{
+	if (sampBool == SAMP_FALSE)
+	{
+		exit(0);
+	}
 }
 
 void CheckMCLibraryInitialization(MC_STATUS mcStatus)
