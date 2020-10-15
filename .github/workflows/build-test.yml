@@ -13,6 +13,4 @@ jobs:
        
      - name: storscu_test build
        run: g++ -o scu_test scuTest/*.cpp
-      
-     - name: Run scu-test
-       run: ./scu_test
+     
