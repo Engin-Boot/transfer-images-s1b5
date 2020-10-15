@@ -77,26 +77,6 @@ TEST_CASE("donot travese node if start and stop numbers are incorrect") {
     REQUIRE(dicom_scu::AddInstancesToFile(A_options, &instanceList, fname) == SAMP_FALSE);
 }
 
-TEST_CASE("add new file node to empty nodelist")
-{
-    InstanceNode* newNode;
-    InstanceNode* instanceList = NULL;
-    char *fname;
-    newNode = (InstanceNode*)malloc(sizeof(InstanceNode));
-    memset(newNode, 0, sizeof(InstanceNode));
-    strncpy(newNode->fname, "0.img", sizeof(newNode->fname));
-    newNode->fname[sizeof(newNode->fname) - 1] = '\0';
-
-    newNode->responseReceived = SAMP_FALSE;
-    newNode->failedResponse = SAMP_FALSE;
-    newNode->imageSent = SAMP_FALSE;
-    newNode->msgID = -1;
-    newNode->transferSyntax = IMPLICIT_LITTLE_ENDIAN;
-    dicom_scu::AddFileToListInstanceInfo(&instanceList, fname, newNode);
-    REQUIRE(dicom_scu::GetNumNodes(instanceList) == 1);
-
-}
-
 TEST_CASE("incement imagesent variable only when the node has imageSent field true")
 {
     InstanceNode*    newNode1;
