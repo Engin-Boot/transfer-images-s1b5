@@ -12,8 +12,8 @@ int main(int argc, char** argv)
     SAMP_BOOLEAN            sampBool;
     STORAGE_OPTIONS         options;
     MC_STATUS               mcStatus;
-    int                     applicationID = -1, associationID = -1, imageCurrent = 0;
-    int                     imagesSent = 0L, totalImages = 0L, fstatus = 0;
+    int                     applicationID = -1, associationID = -1;
+    int                     totalImages = 0L;
     double                  seconds = 0.0;
     void* startTime = NULL, *imageStartTime = NULL;
     char                    fname[512] = { 0 };  /* Extra long, just in case */
