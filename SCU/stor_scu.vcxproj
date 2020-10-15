@@ -35,9 +35,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{43744862-BFE3-4423-87E2-F6A083621056}</ProjectGuid>
-    <RootNamespace>stor_scu</RootNamespace>
+    <VCProjectVersion>16.0</VCProjectVersion> 
     <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{306a09b2-d0cf-4ca1-819c-9a9acc07aac5}</ProjectGuid>
+    <RootNamespace>stor_scu</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
