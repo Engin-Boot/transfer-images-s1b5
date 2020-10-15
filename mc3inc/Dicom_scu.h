@@ -123,6 +123,7 @@ typedef struct patient_info
 {
     char* patient_name;
     char* patient_id;
+    char* SOPinstanceID;
 }Patient_info;
 
 /*
@@ -165,6 +166,7 @@ SAMP_BOOLEAN CheckHostDetails(STORAGE_OPTIONS* A_options);
 void CheckcmdArgs(int A_argc, char* A_argv[], STORAGE_OPTIONS* A_options, Patient_info* patientinfo);
 int checkcmdArgsHostDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options, Patient_info* patientinfo);
 int CheckcmdArgsPatientDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options, Patient_info* patientinfo);
+int CheckPatientSOP(char* A_argv[], int i, STORAGE_OPTIONS* A_options, Patient_info* patientinfo);
 void  CheckImageDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options);
 void  CheckcmdArgsStopImage(char* A_argv[], int i, STORAGE_OPTIONS* A_options);
 SAMP_BOOLEAN AddFileToList(InstanceNode** A_list, char* A_fname);
@@ -179,6 +181,7 @@ SAMP_BOOLEAN SendImageSetSOPInstanceUID(MC_STATUS mcStatus);
 SAMP_BOOLEAN SendImageRequestMessage(STORAGE_OPTIONS* A_options, int A_associationID, InstanceNode* A_node);
 SAMP_BOOLEAN SendImageCheckNormal(int A_associationID, InstanceNode* A_node);
 SAMP_BOOLEAN ChangePatientInfo(InstanceNode* A_node, Patient_info* patientinfo);
+SAMP_BOOLEAN changePatientSOP(InstanceNode* A_node, Patient_info* patientinfo);
 MC_STATUS NOEXP_FUNC StreamToMsgObj(int AmsgID, void* AcBinformation, int AfirstCall, int* AdataLen, void** AdataBuffer, int* AisLast);
 int StreamToMsgObj1(CBinfo* callbackInfo);
 void PrintError(char* A_string, MC_STATUS A_status);
