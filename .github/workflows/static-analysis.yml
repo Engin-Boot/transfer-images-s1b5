@@ -1,9 +1,4 @@
-static analysis
-
-
-
 name: Static Code Analysis
-
 on:
   push:
     branches: [ master ]
