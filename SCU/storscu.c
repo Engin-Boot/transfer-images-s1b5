@@ -941,7 +941,6 @@ SAMP_BOOLEAN ReadMessageFromFile(STORAGE_OPTIONS* A_options,
     MC_STATUS mcStatus;
     unsigned long errorTag = 0;
     CBinfo callbackInfo = { 0 };
-    int retStatus = 0;
     SAMP_BOOLEAN sampBool;
 
     /*
