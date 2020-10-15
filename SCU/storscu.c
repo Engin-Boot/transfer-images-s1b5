@@ -214,7 +214,7 @@ void TraverseInstanceListNSend(STORAGE_OPTIONS options, InstanceNode** node,int 
         sampBool = UpdateNode((*node));
         UpdateNodeCheck(sampBool, *node, associationID, applicationID);
 
-        ImageSentCount(*node);
+        ImageSentCount(*node,&imagesSent);
 
         mcStatus = MC_Free_Message(&(*node)->msgID);
         CheckMCFreeMessage(mcStatus);
@@ -262,7 +262,7 @@ void UpdateNodeCheck(SAMP_BOOLEAN sampBool, InstanceNode* node, int associationI
     }
 }
 
-void ImageSentCount(InstanceNode* node)
+void ImageSentCount(InstanceNode* node,int* imagesSent)
 {
     int imagesSent = 0;
     if ((node)->imageSent == SAMP_TRUE)
