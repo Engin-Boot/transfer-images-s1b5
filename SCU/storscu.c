@@ -991,7 +991,7 @@ SAMP_BOOLEAN ReadMessageFromFile(STORAGE_OPTIONS* A_options,
     *A_bytesRead = callbackInfo.bytesRead;
     fflush(stdout);
 
-    return SAMP_TRUE;
+    return sampBool;
 
 } /* ReadMessageFromFile() */
 
