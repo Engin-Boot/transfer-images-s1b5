@@ -18,4 +18,4 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
     - name: static analysis
-      run: cppcheck --enable=all --error-exitcode=1 -i SCU/general_util.c
+      run: cppcheck --enable=all --error-exitcode=1  SCU/storscu.c
