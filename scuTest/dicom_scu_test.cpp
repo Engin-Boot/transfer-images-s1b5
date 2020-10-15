@@ -14,14 +14,14 @@ TEST_CASE("Test to check copying of default servicelist") {
 TEST_CASE("when RemoteHostname and Remote port are not set"){
     STORAGE_OPTIONS A_options;
  //int i = scu::CheckHostDetails(&A_options);
-REQUIRE(dicom_scu::CheckHostDetails(&A_options) == FALSE);
+REQUIRE(dicom_scu::CheckHostDetails(&A_options) == SAMP_FALSE);
 }
 
 TEST_CASE("when RemoteHostname and Remote port are set") {
     STORAGE_OPTIONS A_options;
     strcpy(A_options.RemoteHostname,"localhost");
     A_options.RemotePort = 4;
-    REQUIRE(dicom_scu::CheckHostDetails(&A_options) == TRUE);
+    REQUIRE(dicom_scu::CheckHostDetails(&A_options) == SAMP_TRUE);
 }
 
 TEST_CASE("When MC_Stream_To_Message syntax used is wrong") {
@@ -125,7 +125,7 @@ TEST_CASE("File is opened and initial input buffer is set") {
     CBinfo callbackInfo;
     char* A_filename;
     int* A_msgID;
-    REQUIRE(dicom_scu::ReadMessageFromFileOpenNStream(A_filename, A_msgID) == FALSE);
+    REQUIRE(dicom_scu::ReadMessageFromFileOpenNStream(A_filename, A_msgID) == SAMP_FALSE);
 }
 
 int listLength(InstanceNode* item)
