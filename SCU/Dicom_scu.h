@@ -154,7 +154,7 @@ void TraverseInstanceListNSend(STORAGE_OPTIONS options, InstanceNode** node, int
 void ReadImageCheckOpen(SAMP_BOOLEAN sampBool, InstanceNode* node);
 void SendImageCheck(SAMP_BOOLEAN sampBool, InstanceNode* node, int associationID, int applicationID);
 void UpdateNodeCheck(SAMP_BOOLEAN sampBool, InstanceNode* node, int associationID, int applicationID);
-void ImageSentCount(InstanceNode* node);
+void ImageSentCount(InstanceNode* node,int* imagesSent);
 void CheckMCFreeMessage(MC_STATUS mcStatus);
 void CheckMCCloseAssociation(MC_STATUS mcStatus, int associationID);
 void CheckMCReleaseApplication(MC_STATUS mcStatus);
