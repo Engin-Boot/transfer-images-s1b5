@@ -369,14 +369,31 @@ int CheckcmdArgsPatientDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options
         strcpy(patientinfo->patient_name, A_argv[i]);
         return i;
     }
-    else
+        else
     {
-        CheckImageDetails(A_argv, i, A_options);
+        i= CheckPatientSOP(A_argv, i, A_options, patientinfo);
         return i;
     }
 
 }
 
+int CheckPatientSOP(char* A_argv[], int i, STORAGE_OPTIONS* A_options, Patient_info* patientinfo)
+{
+    if (!strcmp(A_argv[i], "-a"))
+    {
+        /*
+        * Remote Host Name
+        */
+        i++;
+        strcpy(patientinfo->SOPinstanceID, A_argv[i]);
+        return i;
+    }
+    else
+    {
+        CheckImageDetails(A_argv, i, A_options);
+        return i;
+    }
+}
 
 int checkcmdArgsHostDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options, Patient_info* patientinfo)
 {
