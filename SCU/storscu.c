@@ -431,6 +431,7 @@ SAMP_BOOLEAN TestCmdLine(int A_argc, char* A_argv[], STORAGE_OPTIONS* A_options,
     int       i = 0, argCount = 0;
     patientinfo->patient_id = "Patient ID";
     patientinfo->patient_name = "Last First";
+    patientinfo->SOPinstanceID = "\0";
     if (A_argc < 3)
     {
         PrintCmdLine();
@@ -663,6 +664,18 @@ SAMP_BOOLEAN ChangePatientInfo(InstanceNode* A_node, Patient_info* patientinfo)
     if (mcStatus != MC_NORMAL_COMPLETION)
     {
         PrintError("MC_Set_Value_From_String for Patient id failed", mcStatus);
+        return FALSE;
+    }
+    return changePatientSOP(A_node,patientinfo);
+}
+
+SAMP_BOOLEAN changePatientSOP(InstanceNode* A_node, Patient_info* patientinfo)
+{
+    MC_STATUS               mcStatus;
+    mcStatus = MC_Set_Value_From_String(A_node->msgID, MC_ATT_SOP_INSTANCE_UID, patientinfo->SOPinstanceID);
+    if (mcStatus != MC_NORMAL_COMPLETION)
+    {
+        PrintError("MC_Set_Value_From_String for SOPinstanceID failed", mcStatus);
         return FALSE;
     }
     return TRUE;
