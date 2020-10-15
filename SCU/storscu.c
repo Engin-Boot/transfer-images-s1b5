@@ -194,7 +194,7 @@ void TraverseInstanceListNSend(STORAGE_OPTIONS options, InstanceNode** node,int 
         * Determine the image format and read the image in.  If the
         * image is in the part 10 format, convert it into a message.
         */
-        sampBool = ReadImage(&options, applicationID, (*node), &(*patientinfo));
+        sampBool = ReadImage(&options, applicationID, (*node), &(patientinfo));
         ReadImageCheckOpen(sampBool, *node);
 
         totalBytesRead += (*node)->imageBytes;
