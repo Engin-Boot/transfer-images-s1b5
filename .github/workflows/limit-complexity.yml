@@ -17,4 +17,4 @@ jobs:
       run: pip install lizard
 
     - name: Limit complexity
-      run: $HOME/.local/bin/lizard --CCN 3 -x "./SCU/general_util.c"
+      run: $HOME/.local/bin/lizard --CCN 3 -x "./SCU/general_util.c" -x "./scuTest/catch.hpp"
