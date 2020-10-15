@@ -616,7 +616,7 @@ int GetNumNodes(InstanceNode* A_list)
 SAMP_BOOLEAN ReadImage(STORAGE_OPTIONS* A_options, int A_appID, InstanceNode* A_node, Patient_info* patientinfo)
 {
     FORMAT_ENUM             format = IMPLICIT_LITTLE_ENDIAN_FORMAT;
-    SAMP_BOOLEAN            sampBool = SAMP_FALSE;
+    SAMP_BOOLEAN            sampBool;
 
     sampBool = ReadMessageFromFile(A_options, A_node->fname, format, &A_node->msgID, &A_node->transferSyntax, &A_node->imageBytes);
     SAMP_BOOLEAN sampboolean = TRUE;
