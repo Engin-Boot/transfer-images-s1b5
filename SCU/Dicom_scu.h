@@ -177,7 +177,7 @@ int GetNumNodes(InstanceNode* A_list);
 SAMP_BOOLEAN ReadImage(STORAGE_OPTIONS* A_options, int A_appID, InstanceNode* A_node, Patient_info* patientinfo);
 SAMP_BOOLEAN ReadImageChangeID(InstanceNode* A_node);
 SAMP_BOOLEAN SendImage(STORAGE_OPTIONS* A_options, int A_associationID, InstanceNode* A_node);
-SAMP_BOOLEAN SendImageSetSOPInstanceUID(MC_STATUS mcStatus);
+void SendImageSetSOPInstanceUID(MC_STATUS mcStatus);
 SAMP_BOOLEAN SendImageRequestMessage(STORAGE_OPTIONS* A_options, int A_associationID, InstanceNode* A_node);
 SAMP_BOOLEAN SendImageCheckNormal(int A_associationID, InstanceNode* A_node);
 SAMP_BOOLEAN ChangePatientInfo(InstanceNode* A_node, Patient_info* patientinfo);
