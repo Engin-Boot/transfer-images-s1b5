@@ -730,7 +730,7 @@ SAMP_BOOLEAN SendImage(STORAGE_OPTIONS* A_options, int A_associationID, Instance
     mcStatus = MC_Set_Value_From_String(A_node->msgID, MC_ATT_AFFECTED_SOP_INSTANCE_UID, A_node->SOPInstanceUID);
 
     /* Check whether SOP Instance UID is set to correct value */
-    sampBool = SendImageSetSOPInstanceUID(mcStatus);
+    SendImageSetSOPInstanceUID(mcStatus);
 
     /*
     *  Send the message
@@ -744,16 +744,14 @@ SAMP_BOOLEAN SendImage(STORAGE_OPTIONS* A_options, int A_associationID, Instance
     return sampBool;
 }
 
-SAMP_BOOLEAN SendImageSetSOPInstanceUID(MC_STATUS mcStatus)
+void SendImageSetSOPInstanceUID(MC_STATUS mcStatus)
 {
     if (mcStatus != MC_NORMAL_COMPLETION)
     {
         PrintError("MC_Set_Value_From_String failed for affected SOP Instance UID", mcStatus);
         fflush(stdout);
-        return (SAMP_TRUE);
     }
 
-    return SAMP_FALSE;
 }
 
 SAMP_BOOLEAN SendImageRequestMessage(STORAGE_OPTIONS* A_options, int A_associationID, InstanceNode* A_node)
