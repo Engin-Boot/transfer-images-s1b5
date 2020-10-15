@@ -658,7 +658,7 @@ SAMP_BOOLEAN ChangePatientInfo(InstanceNode* A_node, Patient_info* patientinfo)
         PrintError("MC_Set_Value_From_String for Patient name failed", mcStatus);
         return FALSE;
     }
-    mcStatus = mcStatus = MC_Set_Value_From_String(A_node->msgID, MC_ATT_PATIENT_ID, patientinfo->patient_id);
+    mcStatus = MC_Set_Value_From_String(A_node->msgID, MC_ATT_PATIENT_ID, patientinfo->patient_id);
     if (mcStatus != MC_NORMAL_COMPLETION)
     {
         PrintError("MC_Set_Value_From_String for Patient id failed", mcStatus);
