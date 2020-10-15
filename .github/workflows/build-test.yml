@@ -1,0 +1,18 @@
+name: SCU TEST
+ 
+on:
+   push:
+     branches: [ master ]
+   pull_request:
+     branches: [ master ] 
+jobs:
+   build:
+    runs-on: ubuntu-latest 
+    steps:
+     - uses: actions/checkout@v2
+       
+     - name: storscu_test build
+       run: g++ -o scu_test scuTest/*.cpp
+      
+     - name: Run scu-test
+       run: ./scu_test
