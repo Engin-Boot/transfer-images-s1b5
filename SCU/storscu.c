@@ -428,7 +428,6 @@ int checkcmdArgsHostDetails(char* A_argv[], int i, STORAGE_OPTIONS* A_options, P
 
 SAMP_BOOLEAN TestCmdLine(int A_argc, char* A_argv[], STORAGE_OPTIONS* A_options, Patient_info* patientinfo)
 {
-    int       i = 0, argCount = 0;
     patientinfo->patient_id = "Patient ID";
     patientinfo->patient_name = "Last First";
     patientinfo->SOPinstanceID = "\0";
