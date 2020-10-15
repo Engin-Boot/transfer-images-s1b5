@@ -17,5 +17,5 @@ jobs:
     - name: install cppcheck static analysis
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
-    - name: static analysis of SCU
-      run: ./Cppcheck_Config/cppcheck.exe SCU/storscu.c --verbose --std=c --language=c --enable=all
+    - name: static analysis
+      run: cppcheck --enable=all --check-config --error-exitcode=1 .
