@@ -9,12 +9,6 @@ TEST_CASE("Test to check copying of default servicelist") {
     string s(A_options.ServiceList);
     int i=(s).compare("Storage_SCU_Service_List");
     REQUIRE(i==0);
-    }
-    
-TEST_CASE("when RemoteHostname and Remote port are not set"){
-    STORAGE_OPTIONS A_options;
- //int i = scu::CheckHostDetails(&A_options);
-REQUIRE(dicom_scu::CheckHostDetails(&A_options) == SAMP_FALSE);
 }
 
 TEST_CASE("when RemoteHostname and Remote port are set") {
