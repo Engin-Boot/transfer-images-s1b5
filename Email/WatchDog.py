@@ -59,10 +59,7 @@ class Handler(FileSystemEventHandler):
                   "Thank You!"
 
             send_email(subject, msg)
-        elif event.event_type == 'modified':
-            # Event is modified, you can process it now
-            print("Watchdog received modified event - % s." % event.src_path)
-
+        
 
 if __name__ == '__main__':
     watch = OnMyWatch()
