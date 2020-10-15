@@ -264,7 +264,6 @@ void UpdateNodeCheck(SAMP_BOOLEAN sampBool, InstanceNode* node, int associationI
 
 void ImageSentCount(InstanceNode* node,int* imagesSent)
 {
-    int imagesSent = 0;
     if ((node)->imageSent == SAMP_TRUE)
     {
         imagesSent++;
