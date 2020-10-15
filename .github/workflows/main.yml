@@ -20,5 +20,3 @@ jobs:
     - name: Build SCU
       run: msbuild SCU/stor_scu.vcxproj /p:configuration=debug /p:platform=x64
       
-    - name: static analysis of SCU
-      run: ./Cppcheck_Config/cppcheck.exe SCU/storscu.c --verbose --language=c --enable=all
