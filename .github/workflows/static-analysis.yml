@@ -1,0 +1,21 @@
+name: Build and Run
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: install cppcheck static analysis
+      run: sudo apt-get update && sudo apt-get install -y cppcheck
+      
+    - name: static analysis of SCU
+      run: ./Cppcheck_Config/cppcheck.exe SCU/storscu.c --verbose --std=c --language=c --enable=all
