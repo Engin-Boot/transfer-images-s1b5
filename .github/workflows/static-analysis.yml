@@ -17,4 +17,4 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
     - name: static analysis
-      run: cppcheck   SCU/storscu.c
+      run: cppcheck   SCU/stor_scu.c
