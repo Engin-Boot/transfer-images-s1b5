@@ -1,5 +1,5 @@
 # InstallationManual
-##About
+## About
 This application is a Service Class User(SCU) built over DICOM Storage Service Class supported by MergeCom toolkit. SCU sends message to a DICOM SCP (Service Class Provider). Any third party SCP can be used along with this SCU. SCU acts as a client and SCP as a server which receives message from client.
 
 Storage Service Class defines context of transfer of images from one DICOM application entity to another. This Storage Service does not specify that the receiver of the images take ownership for the safekeeping of the images. In this SCU storage commitment from SCP can not be negotiated.
