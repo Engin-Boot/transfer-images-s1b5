@@ -14,9 +14,9 @@ To Transfer images SCU does the following actions:
 ## Setup
 The following steps can be followed to run this SCU:
 
-- Build stor_scu.vcxproj, which is in SCU directory of this repo, using msbuild by setting the configuration as Debug/x64.
+- Build stor_scu.vcxproj, which is in SCU directory of this repo, using msbuild by setting the configuration as Release/x64.
 - Copy all files from mc3lib directory to the SCU directory
-- copy stor_scu.exe from x64Debug folder to scu directory
+- copy stor_scu.exe from x64Release folder to scu directory
 
 ## Execution
 - Execute the off the shelf scp
@@ -24,4 +24,4 @@ The following steps can be followed to run this SCU:
 
 - In command prompt reach path to stor_scu.exe, now enter command stor_scu a list of command syntax of features supported will be displayed. Enter the command you want. The media file(.img) to be sent should be in the same directory. Example:
 
-- stor_scu MERGE_STORE_SCP 0 1: This command will send file 0.img to 1.img to this SCP
+stor_scu MERGE_STORE_SCP 0 1: This command will send file 0.img to 1.img to this SCP
