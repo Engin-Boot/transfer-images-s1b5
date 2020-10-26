@@ -17,15 +17,30 @@
  *                 into buffer to be used by the MC_Stream_To_Message function.
  *
  **************************************************************************/
- MC_STATUS NOEXP_FUNC StreamToMsgObj(int        A_msgID,
+
+int StreamToMsgObj1(CBinfo* callbackInfo)
+{
+    int i;
+    if (feof(callbackInfo->fp))
+    {
+        i = 1;
+        fclose(callbackInfo->fp);
+        callbackInfo->fp = NULL;
+    }
+    else
+        i = 0;
+    return i;
+}
+MC_STATUS NOEXP_FUNC StreamToMsgObj(int A_msgID,
     void* A_CBinformation,
-    int        A_isFirst,
+    int A_isFirst,
     int* A_dataSize,
     void** A_dataBuffer,
     int* A_isLast)
 {
-    size_t          bytesRead;
+    size_t bytesRead;
     CBinfo* callbackInfo = (CBinfo*)A_CBinformation;
+
     if (A_isFirst)
         callbackInfo->bytesRead = 0L;
 
@@ -35,22 +50,14 @@
         perror("\tRead error when streaming message from file.\n");
         return MC_CANNOT_COMPLY;
     }
-
-    if (feof(callbackInfo->fp))
-    {
-        *A_isLast = 1;
-        fclose(callbackInfo->fp);
-        callbackInfo->fp = NULL;
-    }
-    else
-        *A_isLast = 0;
-
+    *A_isLast = StreamToMsgObj1(callbackInfo);
     *A_dataBuffer = callbackInfo->buffer;
     *A_dataSize = (int)bytesRead;
     callbackInfo->bytesRead += bytesRead;
 
     return MC_NORMAL_COMPLETION;
 } /* StreamToMsgObj() */
+
 
 /****************************************************************************
  *

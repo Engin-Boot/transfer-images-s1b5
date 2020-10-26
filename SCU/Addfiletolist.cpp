@@ -14,17 +14,9 @@
  *                  list.
  *
  ****************************************************************************/
-SAMP_BOOLEAN AddFileToList(InstanceNode** A_list, char* A_fname)
+SAMP_BOOLEAN AddFileToListInstanceInfo(InstanceNode** A_list, char* A_fname, InstanceNode* newNode)
 {
-    InstanceNode* newNode;
     InstanceNode* listNode;
-    newNode = (InstanceNode*)malloc(sizeof(InstanceNode));
-    if (!newNode)
-    {
-        PrintError("Unable to allocate object to store instance information", MC_NORMAL_COMPLETION);
-        return (SAMP_FALSE);
-    }
-
     memset(newNode, 0, sizeof(InstanceNode));
 
     strncpy(newNode->fname, A_fname, sizeof(newNode->fname));
@@ -39,16 +31,16 @@ SAMP_BOOLEAN AddFileToList(InstanceNode** A_list, char* A_fname)
     if (!*A_list)
     {
         /*
-         * Nothing in the list
-         */
+        * Nothing in the list
+        */
         newNode->Next = *A_list;
         *A_list = newNode;
     }
     else
     {
         /*
-         * Add to the tail of the list
-         */
+        * Add to the tail of the list
+        */
         listNode = *A_list;
 
         while (listNode->Next)
@@ -56,6 +48,20 @@ SAMP_BOOLEAN AddFileToList(InstanceNode** A_list, char* A_fname)
 
         listNode->Next = newNode;
     }
-
-    return (SAMP_TRUE);
+    return SAMP_TRUE;
 }
+SAMP_BOOLEAN AddFileToList(InstanceNode** A_list, char* A_fname)
+{
+    InstanceNode* newNode;
+    newNode = (InstanceNode*)malloc(sizeof(InstanceNode));
+    if (!newNode)
+    {
+        PrintError("Unable to allocate object to store instance information", MC_NORMAL_COMPLETION);
+        return (SAMP_FALSE);
+    }
+    SAMP_BOOLEAN sampbool = AddFileToListInstanceInfo(A_list, A_fname, newNode);
+    return (sampbool);
+}
+
+
+

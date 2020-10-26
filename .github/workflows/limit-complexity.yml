@@ -17,4 +17,4 @@ jobs:
       run: pip install lizard
 
     - name: Limit complexity
-      run: $HOME/.local/bin/lizard --CCN 3 -x "./SCU/general_util.c" -x "./SCU/stor_scu.c" -x "./SCU/Addfiletolist.cpp" -x "./SCU/sendimage.cpp" -x "./SCU/cmdlinefunction.cpp" -x "./SCU/response.cpp" -x "./SCU/readimage.cpp" -x "./SCU/nodefunction.cpp" -x "./SCU/Streamtomsgobj.cpp" -x "./scuTest/catch.hpp"
+      run: $HOME/.local/bin/lizard --CCN 3 -x "./SCU/general_util.c" -x "./SCU/stor_scu.c" -x "./SCU/sendimage.cpp" -x "./SCU/cmdlinefunction.cpp" -x "./SCU/response.cpp" -x "./SCU/nodefunction.cpp" -x "./scuTest/catch.hpp"

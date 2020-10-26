@@ -10,7 +10,3 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
      - uses: actions/checkout@v2
-       
-     - name: storscu_test build
-       run: g++ -o scu_test scuTest/*.cpp
-     
