@@ -1,7 +1,8 @@
 import os
 import pandas as pd 
 import sys
-status_filename_with_location = "/Users/rahulaggrawal/PycharmProjects/casestudy/Data.csv"
+
+status_filename_with_location = "/Users/rajmalbashashaik/Desktop/bootcamp/transfer-images-s1b5/Email/Data.csv"
 
 if(os.path.isfile(status_filename_with_location)):
     image_list = pd.read_csv(status_filename_with_location)
@@ -21,6 +22,14 @@ def check_in_current_image_list_and_add(i,current_image_list):
     if(i not in current_image_list):
         add_filename_to_csv(i)
 
+def check_if_it_is_a_img(split_str):
+    if(len(split_str)==2):
+        if(split_str[1]=="img"):
+            return True
+        else:
+            return False
+        
+
 
 def check_for_new_imgfiles(path):
     files_list = os.listdir(path)
@@ -28,11 +37,12 @@ def check_for_new_imgfiles(path):
     current_image_list = image_list['FileName'].values.tolist()
     for i in files_list:
         split_str = i.split(".")
-        if(split_str[1]=="img"):
+        is_a_img = check_if_it_is_a_img(split_str)
+        if(is_a_img):
             check_in_current_image_list_and_add(i,current_image_list)
+
+      
             
-
-
 def show_all_img_with_status():
     image_list = pd.read_csv(status_filename_with_location)
     print(image_list)
@@ -51,7 +61,7 @@ def update_file_status(fileName, status):
 def update_status():
     
     show_all_img_with_status()
-    imageName = input("Type the name of the file you want to select: ")
+    imageName = input("Enter the complete name of the file to be updated ")
     inputStr = input("Is this image diagnosed (yes/no)? ")
     if(input == "yes"):
         update_file_status(imageName , inputStr)
@@ -68,6 +78,8 @@ def menu(path):
         else:
             break
 
+def print_to_stderr(*a): 
+    print(*a, file = sys.stderr)
 
 if __name__ == "__main__":
 
@@ -77,5 +89,5 @@ if __name__ == "__main__":
      if (isExist):
          menu(path)
      else:
-         print("Path Doesn't exists. Please re-enter the correct path!!!")
+         print_to_stderr("Path Doesn't exists. Please re-enter the correct path!!!")
          
