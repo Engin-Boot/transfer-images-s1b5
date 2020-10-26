@@ -15,9 +15,6 @@ jobs:
     
     - name: install cppcheck static analysis
       run: sudo apt-get update && sudo apt-get install -y cppcheck
-      
-    - name: cd into SCU to perform static analysis
-      run: cd SCU 
-      
+    
     - name: static analysis
-      run: cppcheck stor_scu.c 
+      run: cppcheck SCU/stor_scu.c 
