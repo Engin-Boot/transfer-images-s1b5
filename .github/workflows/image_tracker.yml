@@ -23,5 +23,5 @@ jobs:
         pip install pandas as pd
         
     - name: Run Image Tracker
-      run: python image_tracker/track_images.py
+      run: python image_tracker/image_test.py
     
