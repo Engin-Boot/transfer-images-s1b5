@@ -16,7 +16,9 @@ def print_to_stderr(*a):
     #exit()
 
 # check if the img path exists or not
-if not os.path.exists(config.ADDRESS_OF_IMG_FILES):
+if os.path.exists(config.ADDRESS_OF_IMG_FILES):
+    print("Path is Matched")
+else:
     print_to_stderr("Path Doesn't exists. Please re-check the path in config file!!!")
     exit()
 
