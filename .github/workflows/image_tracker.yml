@@ -1,4 +1,4 @@
-name: Build
+name: image_tracker
 
 on:
   push:
