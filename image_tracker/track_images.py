@@ -8,14 +8,17 @@ def print_to_stderr(*a):
     print(*a, file=sys.stderr)
 
 
-# check if the img path exists or not
+# checks if the csv file is present
+if not os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
+    print_to_stderr("No csv file with that name at the given location")
+    print_to_stderr("Once check if file name and path is correct in config.py file")
+    print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
+    exit()
 
-def check():
-    if os.path.exists(config.ADDRESS_OF_IMG_FILES):
-        print("Welcome to Image Tracker!!!")
-    else:
-        print_to_stderr("Path Doesn't exists. Please re-check the path in config file!!!")
-        exit()
+# check if the img path exists or not
+if not os.path.exists(config.ADDRESS_OF_IMG_FILES):
+    print_to_stderr("Path Doesn't exists. Please re-check the path in config file!!!")
+    exit()
 
 
 # Adds an img file to csv and returns true if successfully added and false if the operation is failed
@@ -93,7 +96,6 @@ def show_all_img_with_status():
     image_list = pd.read_csv(config.ADDRESS_OF_DATA_CSV_FILE)
     print(image_list)
 
-
 # update the status of the img file with the given status
 def update_file_status(fileName, status):
     update_string = status
@@ -141,11 +143,6 @@ def menu():
 
 
 if __name__ == "__main__":
-    if os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
-        check()
-        menu()
-    else:
-        print_to_stderr("No csv file with that name at the given location")
-        print_to_stderr("Once check if file name and path is correct in config.py file")
-        print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
-        exit()
+    print("Welcome to Image Tracker!!!")
+    menu()
+
