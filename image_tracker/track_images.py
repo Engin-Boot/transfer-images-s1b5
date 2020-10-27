@@ -8,19 +8,14 @@ def print_to_stderr(*a):
     print(*a, file=sys.stderr)
 
 
-# checks if the csv file is present
-#if not os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
-    #print_to_stderr("No csv file with that name at the given location")
-    #print_to_stderr("Once check if file name and path is correct in config.py file")
-    #print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
-    #exit()
-
 # check if the img path exists or not
-if os.path.exists(config.ADDRESS_OF_IMG_FILES):
-    print("Path is Matched")
-else:
-    print_to_stderr("Path Doesn't exists. Please re-check the path in config file!!!")
-    exit()
+
+def check():
+    if os.path.exists(config.ADDRESS_OF_IMG_FILES):
+        print("Welcome to Image Tracker!!!")
+    else:
+        print_to_stderr("Path Doesn't exists. Please re-check the path in config file!!!")
+        exit()
 
 
 # Adds an img file to csv and returns true if successfully added and false if the operation is failed
@@ -46,7 +41,7 @@ def check_for_add_the_list(count, files_list_len):
 
 # A level of abstraction is implemented and returns true if all the img files are added, and false upon failing
 def add_the_list(files_list):
-    count = 0;
+    count = 0
     files_list_len = len(files_list)
     for i in files_list:
         if add_filename_to_csv(i):
@@ -147,11 +142,10 @@ def menu():
 
 if __name__ == "__main__":
     if os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
-        print("Welcome to Image Tracker!!!")
+        check()
         menu()
     else:
         print_to_stderr("No csv file with that name at the given location")
         print_to_stderr("Once check if file name and path is correct in config.py file")
         print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
         exit()
-
