@@ -9,11 +9,11 @@ def print_to_stderr(*a):
 
 
 # checks if the csv file is present
-if not os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
-    print_to_stderr("No csv file with that name at the given location")
-    print_to_stderr("Once check if file name and path is correct in config.py file")
-    print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
-    exit()
+#if not os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
+    #print_to_stderr("No csv file with that name at the given location")
+    #print_to_stderr("Once check if file name and path is correct in config.py file")
+    #print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
+    #exit()
 
 # check if the img path exists or not
 if not os.path.exists(config.ADDRESS_OF_IMG_FILES):
@@ -144,6 +144,12 @@ def menu():
 
 
 if __name__ == "__main__":
-    print("Welcome to Image Tracker!!!")
-    menu()
+    if os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
+        print("Welcome to Image Tracker!!!")
+        menu()
+    else:
+        print_to_stderr("No csv file with that name at the given location")
+        print_to_stderr("Once check if file name and path is correct in config.py file")
+        print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
+        exit()
 
