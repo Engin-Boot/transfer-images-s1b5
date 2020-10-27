@@ -1,6 +1,6 @@
 # For email utility:
 ## Description:
-this is designed to send a email to radiologists when a new image is received
+This is designed to send a email to radiologists when a new image is received
 
 ## usage:
 
@@ -11,11 +11,10 @@ https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4N7SJHvNSopLh6047nQe
 
 # For image_tracker:
 ## Description:
-this module is designed for keep tracking of image status.it keep track of image status in a csv file .whenever a user change the status of a image it is stored
-in Data.csv. 
+This module is designed for keep tracking of images generated and their status. It checks for new images and append it to csv file. It keep track of image status in a csv file. Whenever a user change the status of a image it is stored in Data.csv. 
 
 ## usage:
 
-- specify address of image files and address of csv file in config file 
-- then Run track_images.py 
+- Specify the address of image files and address of csv file in config file 
+- Then run track_images.py 
 
