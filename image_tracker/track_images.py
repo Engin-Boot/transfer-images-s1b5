@@ -9,7 +9,7 @@ def print_to_stderr(*a):
 
 
 # checks if the csv file is present
-if not os.path.isfile(config.ADDRESS_OF_DATA_CSV_FILE):
+if not os.path.isfile("Data.csv"):
     print_to_stderr("No csv file with that name at the given location")
     print_to_stderr("Once check if file name and path is correct in config.py file")
     print_to_stderr("If no csv is present create a new csv file, update the config file and re-run the program")
