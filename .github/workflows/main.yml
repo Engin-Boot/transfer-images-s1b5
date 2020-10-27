@@ -18,8 +18,4 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.0
     
     - name: Build SCU
-      run: msbuild SCU/stor_scu.vcxproj /p:configuration=debug /p:platform=x64
-      
-    - name: coverage report Storscu
-      run: gcov -r SCU/stor_scu.c
-      
+      run: msbuild SCU/stor_scu.vcxproj /p:configuration=release /p:platform=x64
