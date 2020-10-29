@@ -21,7 +21,7 @@ if not os.path.exists(config.ADDRESS_OF_IMG_FILES):
     exit()
 
 
-# Adds an img file to csv and returns true if successfully added and false if the operation is failed
+# Adds an img file to csv and throws and exception if csv is read only
 def add_filename_to_csv(fileName):
     image_list = pd.read_csv(config.ADDRESS_OF_DATA_CSV_FILE)
     new_row = {'FileName': fileName, 'Status': 'Pending for diagnosis'}
@@ -32,12 +32,12 @@ def add_filename_to_csv(fileName):
         print_to_stderr("Permission Denied!! Read only csv file. Can to write mode and try")
     
     
-# A level of abstraction is implemented and returns true if all the img files are added, and false upon failing
+# A level of abstraction is implemented adds the file in files list to csv file
 def add_the_list_to_file(files_list):
     for i in files_list:
         add_filename_to_csv(i)
             
-# check if the new img file is in current image list and returns true if not present
+# checks if the new img file can be append to current image list
 def check_if_imgfile_can_be_append_to_current_image_list(i, current_image_list):
     if i not in current_image_list:
         return True
@@ -95,7 +95,7 @@ def update_status():
     inputStr = input("Is this image diagnosed (Diagnosed/Pending for Diagnosis)? ")
     update_file_status_in_csv(imageName, inputStr)
 
-# check files_list and if it is not empty add those files
+# check files_list and if it is not empty pass the files list to add the list to file function
 def check_files_list_and_add_to_file(files_list):
     if files_list:
         add_the_list_to_file(files_list)
